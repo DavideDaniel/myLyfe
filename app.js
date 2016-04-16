@@ -1,8 +1,6 @@
 const express = require('express');
 const path = require('path');
-// favico
-// logger
-// cookies
+const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const db = require('./config/db');
@@ -33,7 +31,7 @@ mongoose.connection.on('error', () => {
 
 // views related
 
-
+app.use(favicon(__dirname + '/public/imgs/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
