@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
-const authenticated = function auth(req, res, next) {
-  if (req.authenticated()) {
+const isAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/');
+  res.redirect('/login');
 };
 
 module.exports = (passport) => {
@@ -15,22 +15,29 @@ module.exports = (passport) => {
       message: req.flash('message'),
     });
   });
-  router.post('login', passport.authenticate('login', {
+  router.get('/login', (req, res) => {
+    // console.log('got a request');
+    // res.send('index');
+    res.render('index.ejs', {
+      message: req.flash('message'),
+    });
+  });
+  router.post('/login', passport.authenticate('login', {
     successRedirect: '/profile',
     failureRedirect: '/signup',
     failureFlash: true,
   }));
   router.get('/signup', (req, res) => {
-    res.render('index.ejs', {
+    res.render('signup.ejs', {
       message: req.flash('message'),
     });
   });
-  router.post('signup', passport.authenticate('signup', {
+  router.post('/signup', passport.authenticate('signup', {
     successRedirect: '/profile',
     failureRedirect: '/signup',
     failureFlash: true,
   }));
-  router.get('/profile', authenticated, (req, res) => {
+  router.get('/profile', isAuthenticated, (req, res) => {
     res.render('profile.ejs', {
       user: req.user,
     });

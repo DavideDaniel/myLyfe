@@ -1,0 +1,23 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="stylesheet" href="./stylesheets/login.css">
+    </head>
+
+<body>
+
+    <div class="login-page">
+    <% if (user) {
+      <p> <%= user.email %></p>
+    <% } %>
+  </div>
+</div>
+
+
+  <% if ( message ) { %>
+  <p> <%= message %></p>
+  <% } %>
+
+</body>
+</html>
