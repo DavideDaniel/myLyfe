@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body {
   font-family: 'Myriad Pro', 'Trebuchet MS', sans-serif;
-   background: url(../images/loginpage.jpg) no-repeat center center fixed;
+   background: url(../imgs/loginpage.jpg) no-repeat center center fixed;
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/
     -o-background-size: cover;      /* Opera*/
